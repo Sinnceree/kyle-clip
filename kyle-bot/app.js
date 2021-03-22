@@ -149,7 +149,7 @@ async function getClip(slug) {
     url: `https://api.twitch.tv/kraken/clips/${slug}`,
     method: "GET",
     headers: {
-      "Client-ID": "vvse0a64y662solouojiul1cj3ko76",
+      "Client-ID": "_",
       "Accept": "application/vnd.twitchtv.v5+json",
     }
   };
