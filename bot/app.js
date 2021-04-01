@@ -9,8 +9,8 @@ const client = new tmi.Client({
     reconnect: true
   },
   identity: {
-    username: "KyleClipBot",
-    password: "_"
+    username: process.env.botUsername,
+    password: process.env.b
   },
   channels: ["Sinncere"]
 });
@@ -149,7 +149,7 @@ async function getClip(slug) {
     url: `https://api.twitch.tv/kraken/clips/${slug}`,
     method: "GET",
     headers: {
-      "Client-ID": "_",
+      "Client-ID": process.env.clientID,
       "Accept": "application/vnd.twitchtv.v5+json",
     }
   };
