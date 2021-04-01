@@ -69,7 +69,7 @@ const App = () => {
                 removeClip={(slug: string) => removeClip(slug)}
                 playClip={(slug: string) => playClip(slug)}
                 slug={clip.slug}
-                thumbnail={clip.thumbnails.medium}
+                thumbnail={clip.thumbnail_url}
                 title={clip.title} />
             ))}
 
