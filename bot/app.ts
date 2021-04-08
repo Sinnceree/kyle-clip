@@ -10,7 +10,7 @@ const { Twitch } = require("node-ttv")
 dotenv.config()
 
 // const tmi = require('tmi.js');
-const io = socket(5000)
+const io = socket(process.env.PORT || 5000)
 
 // Lets connect to the twitch irc
 const client = new tmi.Client({
