@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "935ded931583c12583b6ad9dd449880d",
+    "revision": "6ef5e89a92c0d0ebc7f69854b8ccec18",
     "url": "/kyle-clip/frontend/index.html"
   },
   {
-    "revision": "1d3ffdca32593d216190",
+    "revision": "e292b48d3173eca219f3",
     "url": "/kyle-clip/frontend/static/css/main.84401f16.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kyle-clip/frontend/static/js/14.497f65ba.chunk.js"
   },
   {
-    "revision": "1d3ffdca32593d216190",
-    "url": "/kyle-clip/frontend/static/js/main.49b77d2b.chunk.js"
+    "revision": "e292b48d3173eca219f3",
+    "url": "/kyle-clip/frontend/static/js/main.4a446b63.chunk.js"
   },
   {
     "revision": "45ff6f103ca48ef702a1",
