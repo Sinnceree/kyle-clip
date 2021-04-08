@@ -63,7 +63,6 @@ function clipsQueued(channel: string, user: tmi.ChatUserstate) {
 
 function enableClips(channel: string, user: tmi.ChatUserstate) {
   if (user.badges?.broadcaster !== "1") { return }
-  if (user.badges.broadcaster !== "1" && !user.mod) { return }
 
   if (clipsEnabled) {
     return client.say(channel, `@${user.username}, Clip time is already enabled!`);
@@ -77,7 +76,6 @@ function enableClips(channel: string, user: tmi.ChatUserstate) {
 
 function disableClips(channel: string, user: tmi.ChatUserstate) {
   if (user.badges?.broadcaster !== "1") { return }
-  if (user.badges.broadcaster !== "1" && !user.mod) { return }
 
   clipsEnabled = false;
   queuedClips = [];
