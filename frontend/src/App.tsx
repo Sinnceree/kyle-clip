@@ -10,7 +10,7 @@ import AutoplayToggle from "./components/AutoplayToggle";
 
 
 // const socket = socketIOClient("http://localhost:5000/");
-const socket = socketIOClient("ec2-3-94-125-219.compute-1.amazonaws.com:5000");
+const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
 
 const App = () => {
   // Pulse state
