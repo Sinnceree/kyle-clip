@@ -2,7 +2,7 @@
   "name": "kyle-site-v2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ec2-3-94-125-219.compute-1.amazonaws.com",
+  "homepage": "https://voxze.github.io/kyle-clip/frontend",
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@testing-library/jest-dom": "^4.2.4",
