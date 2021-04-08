@@ -24,27 +24,38 @@ export class BotClient {
 
 
 
-  enableClips(channel: string, user: tmi.ChatUserstate) {
-    if (user.badges?.broadcaster !== "1") { return }
+  enableClips(channel?: string, user?: tmi.ChatUserstate) {
+    if (user && user.badges?.broadcaster !== "1") { return }
+
 
     if (this.clipsEnabled) {
-      return this.twitchClient.say(channel, `@${user.username}, Clip time is already enabled!`);
+      if (user && channel) {
+        return this.twitchClient.say(channel, `@${user.username}, Clip time is already enabled!`);
+      }
     }
 
     this.clipsEnabled = true;
     this.queuedClips = [];
     io.emit("message", { type: "enableClips" });
-    this.twitchClient.say(channel, `@${user.username}, Successfully enabled clip time!`);
+
+    if (user && channel) {
+      this.twitchClient.say(channel, `@${user.username}, Successfully enabled clip time!`);
+    }
   }
 
-  disableClips(channel: string, user: tmi.ChatUserstate) {
-    if (user.badges?.broadcaster !== "1") { return }
+  disableClips(channel?: string, user?: tmi.ChatUserstate) {
+    if (user && user.badges?.broadcaster !== "1") { return }
 
     this.clipsEnabled = false;
     this.queuedClips = [];
     this.watchedClips = [];
+    this.currentClip = null;
+    this.queuedClipsData = {}
     io.emit("message", { type: "disableClips" });
-    this.twitchClient.say(channel, `@${user.username}, Successfully disabled clip time!`);
+
+    if (user && channel) {
+      this.twitchClient.say(channel, `@${user.username}, Successfully disabled clip time!`);
+    }
   }
 
   clipsQueued(channel: string, user: tmi.ChatUserstate) {

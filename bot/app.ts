@@ -64,6 +64,9 @@ io.on("connection", (socket) => {
     io.emit("message", { type: "clipQueue", clips: Object.keys(bot.queuedClipsData).map(e => bot.queuedClipsData[e]) });
   }
 
+  io.emit("message", { type: "clipsEnabledStaus", status: bot.clipsEnabled });
+
+
   socket.on("message", (data) => {
     switch (data.type) {
       case "nextClip":
@@ -72,6 +75,10 @@ io.on("connection", (socket) => {
         return bot.playNextClip(data.clip);
       case "playClip":
         return bot.playClip(data.clip);
+      case "requestDisableClips":
+        return bot.disableClips()
+      case "requestEnableClips":
+        return bot.enableClips()
       default:
         return;
     }
