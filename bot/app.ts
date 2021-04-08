@@ -23,7 +23,7 @@ const client = new tmi.Client({
     username: process.env["botUsername"],
     password: process.env["botPassword"]
   },
-  channels: ["Kyle", "Sinncere"]
+  channels: ["Kyle"]
 });
 client.connect();
 

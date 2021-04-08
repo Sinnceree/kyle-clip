@@ -12,7 +12,7 @@ import TwitchClip from "./components/TwitchClip/TwitchClip";
 import "./assets/main.css";
 import { usePulse } from "pulse-framework";
 // const socket = socketIOClient("http://localhost:5000/");
-const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
+const socket = socketIOClient("https://ec2-3-94-125-219.compute-1.amazonaws.com:5000");
 
 const App = () => {
   // Pulse state
