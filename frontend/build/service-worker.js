@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kyle-clip/frontend/precache-manifest.51a5ec4eb8dbe68e97bb5a7cfa126612.js"
+  "/kyle-clip/frontend/precache-manifest.06720bd10da249f6437823aff1c34bb7.js"
 );
 
 self.addEventListener('message', (event) => {
