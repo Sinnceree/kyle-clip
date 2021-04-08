@@ -92,7 +92,7 @@ const App = () => {
         });
       }
     }
-  }, [loading])
+  }, [loading, currentClip])
 
   return (
     <div className="container">
