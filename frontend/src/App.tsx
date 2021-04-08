@@ -8,8 +8,8 @@ import ReactPlayer from "react-player"
 import TwitchClip from "./components/TwitchClip/TwitchClip";
 
 import "./assets/main.css";
-// https://kyle-clips-bot.herokuapp.com:5000
-let socket = socketIOClient("http://localhost:5000");
+const socket = socketIOClient("http://localhost:5000");
+
 const App = () => {
   const [clipsQueue, setClipsQueue] = useState<object[]>([]);
   const [currentClip, setCurrentClip] = useState<any>(null);
@@ -39,6 +39,7 @@ const App = () => {
 
   useEffect(() => {
     socket.on("message", (data: any) => {
+      console.log(data)
       switch (data.type) {
         case "enableClips":
           return enableClips();
@@ -57,7 +58,12 @@ const App = () => {
   return (
     <Container className="container">
       <div className="row">
-        <ReactPlayer className="clip-player" url={currentClip !== null ? currentClip.video_url : ""} playing controls onEnded={() => onClipEnded(currentClip)} volume={0.5} />
+        <ReactPlayer
+          className="clip-player" url={currentClip !== null ? currentClip.video_url : ""}
+          // playing
+          controls
+          onEnded={() => onClipEnded(currentClip)}
+          volume={0.1} />
       </div>
 
       <div className="row clip-section">

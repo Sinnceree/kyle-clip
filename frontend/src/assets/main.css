@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 body, html, #root {
   width: 100%;
   margin: 0;
   padding: 0;
   height: 100%;
   background-color: #18181b;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -36,9 +38,9 @@ iframe {
 }
 
 .header-text {
-  font-size: 16px;
+  font-size: 18px;
   color: #fff;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .clip-box {

@@ -1,7 +1,6 @@
 import tmi from "tmi.js"
 import * as dotenv from "dotenv"
 import socket from "socket.io"
-import request from "request"
 import { ClipObject } from "./typeDefs"
 
 
@@ -12,7 +11,6 @@ dotenv.config()
 
 // const tmi = require('tmi.js');
 const io = socket(5000)
-
 
 // Lets connect to the twitch irc
 const client = new tmi.Client({
@@ -64,10 +62,12 @@ function clipsQueued(channel: string, user: tmi.ChatUserstate) {
 }
 
 function enableClips(channel: string, user: tmi.ChatUserstate) {
-  console.log("channelee ", channel)
+  if (user.badges?.broadcaster !== "1") { return }
+
   if (clipsEnabled) {
     return client.say(channel, `@${user.username}, Clip time is already enabled!`);
   }
+
   clipsEnabled = true;
   queuedClips = [];
   io.emit("message", { type: "enableClips" });
@@ -75,6 +75,8 @@ function enableClips(channel: string, user: tmi.ChatUserstate) {
 }
 
 function disableClips(channel: string, user: tmi.ChatUserstate) {
+  if (user.badges?.broadcaster !== "1") { return }
+
   clipsEnabled = false;
   queuedClips = [];
   watchedClips = [];
@@ -104,6 +106,7 @@ io.on("connection", (socket) => {
     }
   });
   socket.on("disconnect", () => console.log("user disconnected"));
+  socket.on("connect", () => console.log("user connect"));
 });
 
 function playNextClip(clip: string) {
@@ -129,12 +132,11 @@ function playNextClip(clip: string) {
 async function handleNewClip(clipUrl: string) {
   // Check is this a twitch clip?
   const isClip = clipUrl.includes("https://clips.twitch.tv/")
-  if (!isClip) { return }
+  if (!clipsEnabled) { return }
+
 
   const urlSplit = clipUrl.split("/");
   const clipSlug = urlSplit[urlSplit.length - 1].split(".")[0];
-
-  console.log(clipSlug)
 
   // Clip is alrady in queue
   if (queuedClips.includes(clipSlug)) { return }
