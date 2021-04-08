@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import socketIOClient from "socket.io-client";
 
 import core from "./core"
@@ -11,17 +11,19 @@ import TwitchClip from "./components/TwitchClip/TwitchClip";
 
 import "./assets/main.css";
 import { usePulse } from "pulse-framework";
-// const socket = socketIOClient("http://localhost:5000/");
-const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
+const socket = socketIOClient("http://localhost:5000/");
+// const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
 
 const App = () => {
   // Pulse state
   const isAuthenticated = usePulse(core.state.isAuthenticated)
+  const playerVolume = usePulse(core.state.playerVolume)
   const loading = usePulse(core.state.loading)
   const [clipsQueue, setClipsQueue] = useState<object[]>([]);
   const [password, setPassword] = useState<string>("");
   const [currentClip, setCurrentClip] = useState<any>(null);
   const [clipsEnabled, setClipsEnabled] = useState<boolean>(false);
+  const playerRef = createRef<any>()
 
   const removeClip = (clip: string) => socket.emit("message", { type: "removeClip", clip: clip });
   const playClip = (clip: string) => socket.emit("message", { type: "playClip", clip: clip });
@@ -80,6 +82,17 @@ const App = () => {
     }
   }
 
+  useEffect(() => {
+    if (!loading) {
+      const video = document.querySelector("video");
+      if (video) {
+        video.addEventListener("volumechange", (event) => {
+          core.state.playerVolume.set(video.volume)
+        });
+      }
+    }
+  }, [loading])
+
   return (
     <Container className="container">
 
@@ -94,11 +107,12 @@ const App = () => {
         <React.Fragment>
           <div className="row">
             <ReactPlayer
+              ref={playerRef}
               className="clip-player" url={currentClip !== null ? currentClip.video_url : ""}
               playing
               controls
-              onEnded={() => onClipEnded(currentClip)}
-              volume={0.1} />
+              volume={playerVolume}
+              onEnded={() => onClipEnded(currentClip)} />
           </div>
 
 

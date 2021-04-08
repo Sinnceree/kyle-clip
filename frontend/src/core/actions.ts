@@ -18,10 +18,7 @@ export const checkAuthentication = async (user: firebase.User | null) => {
 	if (user) {
 		core.state.isAuthenticated.set(true)
 		core.state.user.set(user)
-		console.log(user)
 	}
-
-	console.log("Not logged in")
 	core.state.loading.set(false)
 }
 
