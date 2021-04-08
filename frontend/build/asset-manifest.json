@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/kyle-clip/frontend/static/css/main.967987d4.chunk.css",
-    "main.js": "/kyle-clip/frontend/static/js/main.11c064ea.chunk.js",
-    "main.js.map": "/kyle-clip/frontend/static/js/main.11c064ea.chunk.js.map",
+    "main.js": "/kyle-clip/frontend/static/js/main.599e2833.chunk.js",
+    "main.js.map": "/kyle-clip/frontend/static/js/main.599e2833.chunk.js.map",
     "reactPlayerDailyMotion.js": "/kyle-clip/frontend/static/js/reactPlayerDailyMotion.15fa01fa.chunk.js",
     "reactPlayerDailyMotion.js.map": "/kyle-clip/frontend/static/js/reactPlayerDailyMotion.15fa01fa.chunk.js.map",
     "reactPlayerFacebook.js": "/kyle-clip/frontend/static/js/reactPlayerFacebook.6f362f07.chunk.js",
@@ -32,7 +32,7 @@
     "static/js/14.e50b4cb4.chunk.js": "/kyle-clip/frontend/static/js/14.e50b4cb4.chunk.js",
     "static/js/14.e50b4cb4.chunk.js.map": "/kyle-clip/frontend/static/js/14.e50b4cb4.chunk.js.map",
     "index.html": "/kyle-clip/frontend/index.html",
-    "precache-manifest.f479a888d45d1a7cbac6860dbc048541.js": "/kyle-clip/frontend/precache-manifest.f479a888d45d1a7cbac6860dbc048541.js",
+    "precache-manifest.92ed4985b49d4c29bb1068f859e31505.js": "/kyle-clip/frontend/precache-manifest.92ed4985b49d4c29bb1068f859e31505.js",
     "service-worker.js": "/kyle-clip/frontend/service-worker.js",
     "static/css/main.967987d4.chunk.css.map": "/kyle-clip/frontend/static/css/main.967987d4.chunk.css.map",
     "static/js/13.1b2acd4b.chunk.js.LICENSE.txt": "/kyle-clip/frontend/static/js/13.1b2acd4b.chunk.js.LICENSE.txt"
@@ -41,6 +41,6 @@
     "static/js/runtime-main.6a36ca07.js",
     "static/js/13.1b2acd4b.chunk.js",
     "static/css/main.967987d4.chunk.css",
-    "static/js/main.11c064ea.chunk.js"
+    "static/js/main.599e2833.chunk.js"
   ]
 }

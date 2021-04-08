@@ -60,7 +60,7 @@ const App = () => {
       <div className="row">
         <ReactPlayer
           className="clip-player" url={currentClip !== null ? currentClip.video_url : ""}
-          // playing
+          playing
           controls
           onEnded={() => onClipEnded(currentClip)}
           volume={0.1} />
