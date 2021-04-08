@@ -2,6 +2,7 @@ import tmi from "tmi.js"
 import * as dotenv from "dotenv"
 import socket from "socket.io"
 import { BotClient } from "./classes/BotClient"
+import request from "request"
 
 
 const { Twitch } = require("node-ttv")
@@ -86,3 +87,13 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => console.log("user disconnected"));
   socket.on("connect", () => console.log("user connect"));
 });
+
+
+setInterval(() => {
+  request("https://kyle-twitchbot.herokuapp.com/", (error, response, body) => {
+    if (error) {
+      console.log(error)
+    }
+    console.log("Pinged Heroku so we don't idle out.")
+  })
+}, 600000) // Ping every 10 minutes
