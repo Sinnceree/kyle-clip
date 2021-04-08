@@ -9,14 +9,15 @@ import Grid from "@material-ui/core/Grid";
 import ReactPlayer from "react-player"
 import TwitchClip from "./components/TwitchClip/TwitchClip";
 
-import "./assets/main.scss";
+import "./assets/main.css";
 import { usePulse } from "pulse-framework";
-const socket = socketIOClient("http://localhost:5000/");
-// const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
+// const socket = socketIOClient("http://localhost:5000/");
+const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
 
 const App = () => {
   // Pulse state
   const isAuthenticated = usePulse(core.state.isAuthenticated)
+  const loading = usePulse(core.state.loading)
   const [clipsQueue, setClipsQueue] = useState<object[]>([]);
   const [password, setPassword] = useState<string>("");
   const [currentClip, setCurrentClip] = useState<any>(null);
@@ -71,13 +72,23 @@ const App = () => {
     firebase.auth().onAuthStateChanged((user) => core.actions.checkAuthentication(user))
   }, []);
 
+  const [error, setError] = useState<null | string>(null)
+  const login = async () => {
+    const loggedIn = await core.actions.login(password)
+    if (loggedIn.error) {
+      setError(loggedIn.message)
+    }
+  }
+
   return (
     <Container className="container">
-      {!isAuthenticated ?
+
+      {!loading && !isAuthenticated ?
         <div className="login">
-          <label>Login</label>
+          <label>Login To View</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button>Login</button>
+          <button onClick={login}>Login</button>
+          {error && <p className="error">{error}</p>}
         </div>
         :
         <React.Fragment>
@@ -93,6 +104,7 @@ const App = () => {
 
           <div className="row clip-section">
             <div className="header-text">Clip Management</div>
+
             <div className="clips">
               <Grid container spacing={2}>
                 {clipsQueue && clipsQueue.map((clip: any) => (
