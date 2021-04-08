@@ -11,8 +11,8 @@ import TwitchClip from "./components/TwitchClip/TwitchClip";
 
 import "./assets/main.css";
 import { usePulse } from "pulse-framework";
-// const socket = socketIOClient("http://localhost:5000/");
-const socket = socketIOClient("https://ec2-3-94-125-219.compute-1.amazonaws.com:5000");
+const socket = socketIOClient("http://localhost:5000/");
+// const socket = socketIOClient("ec2-3-94-125-219.compute-1.amazonaws.com:5000");
 
 const App = () => {
   // Pulse state
@@ -114,7 +114,6 @@ const App = () => {
               volume={playerVolume}
               onEnded={() => onClipEnded(currentClip)} />
           </div>
-
 
           <div className="row clip-section">
             <div className="header-text">Clip Management</div>
