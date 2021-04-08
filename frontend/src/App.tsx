@@ -8,7 +8,7 @@ import ReactPlayer from "react-player"
 import TwitchClip from "./components/TwitchClip/TwitchClip";
 
 import "./assets/main.css";
-const socket = socketIOClient("http://localhost:5000");
+const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com/");
 
 const App = () => {
   const [clipsQueue, setClipsQueue] = useState<object[]>([]);
