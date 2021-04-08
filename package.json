@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "set NODE_ENV=development && nodemon --exec ts-node ./backend/app.ts",
-    "start": "set NODE_ENV=prod && nodemon --exec ts-node ./backend/app.ts"
+    "start": "set NODE_ENV=prod && nodemon --exec ts-node ./backend/app.ts",
+    "postinstall": "npm install --prefix bot && npm install --prefix frontend"
   },
   "author": "",
   "license": "ISC",

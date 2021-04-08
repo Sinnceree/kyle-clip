@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development && nodemon --exec ts-node app.ts"
+    "dev": "set NODE_ENV=development && nodemon --exec ts-node app.ts",
+    "start": "set NODE_ENV=development && nodemon --exec ts-node app.ts"
   },
   "author": "",
   "license": "ISC",
