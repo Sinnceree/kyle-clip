@@ -23,7 +23,7 @@ const client = new tmi.Client({
     username: process.env["botUsername"],
     password: process.env["botPassword"]
   },
-  channels: ["Kyle"]
+  channels: ["Sinncere"]
 });
 client.connect();
 
@@ -89,18 +89,17 @@ io.on("connection", (socket) => {
 
   if (clipsEnabled && queuedClips.length > 0) {
     io.emit("message", { type: "newClip", clip: queuedClipsData[queuedClips[0]] });
-    console.log(queuedClipsData[queuedClips[0]])
     io.emit("message", { type: "clipQueue", clips: Object.keys(queuedClipsData).map(e => queuedClipsData[e]) });
   }
 
   socket.on("message", (data) => {
     switch (data.type) {
       case "nextClip":
-        return playNextClip(data.lastClip.toLowerCase());
+        return playNextClip(data.lastClip);
       case "removeClip":
-        return removeClip(data.clip.toLowerCase());
+        return removeClip(data.clip);
       case "playClip":
-        return playClip(data.clip.toLowerCase());
+        return playClip(data.clip);
       default:
         return;
     }
@@ -122,7 +121,8 @@ function playNextClip(clip: string) {
       io.emit("message", { type: "newClip", clip: queuedClipsData[queuedClips[0]] });
     }
   } else {
-    io.emit("message", { type: "disableClips" });
+    console.log("No more clips ")
+    io.emit("message", { type: "clipsEmpty" });
   }
 
   io.emit("message", { type: "clipQueue", clips: Object.keys(queuedClipsData).map(e => queuedClipsData[e]) }); // Send new clips to frontend
@@ -132,6 +132,9 @@ function playNextClip(clip: string) {
 async function handleNewClip(clipUrl: string) {
   // Check is this a twitch clip?
   const isClip = clipUrl.includes("https://clips.twitch.tv/")
+  if (!isClip) { return }
+
+  // Check if clip time is enabled
   if (!clipsEnabled) { return }
 
 
@@ -160,9 +163,6 @@ async function handleNewClip(clipUrl: string) {
       io.emit("message", { type: "clipQueue", clips: Object.keys(queuedClipsData).map(e => queuedClipsData[e]) }); // Send new clips to frontend
       queuedClips.push(clipSlug); // Add clip ther queue
       console.log("Added clip to queue");
-
-
-      console.log(queuedClipsData[clipSlug])
     }
 
   } catch (error) {
