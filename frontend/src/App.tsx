@@ -10,7 +10,6 @@ import AutoplayToggle from "./components/AutoplayToggle";
 
 
 // const socket = socketIOClient("http://localhost:5000/");
-// const socket = socketIOClient("ec2-3-94-125-219.compute-1.amazonaws.com:5000");
 const socket = socketIOClient("https://kyle-twitchbot.herokuapp.com");
 
 const App = () => {
@@ -115,22 +114,22 @@ const App = () => {
               volume={playerVolume}
               onEnded={() => onClipEnded(currentClip)} />
 
-            <div className="clip-info">
-              <h1 className="clip-title">{currentClip && currentClip.title} </h1>
-            </div>
 
           </div>
 
-          <div className="right-block">
-            {clipsEnabled ?
-              <button className="btn red" onClick={() => socket.emit("message", { type: "requestDisableClips" })}>Disable Clips</button>
-              :
-              <button className="btn" onClick={() => socket.emit("message", { type: "requestEnableClips" })}>Enable Clips</button>
-            }
+          <div className="bottom-block">
+            <h1 className="header-text" style={{ marginBottom: "1rem" }}>Controls</h1>
+            <section className="controls">
+              < AutoplayToggle />
+              {clipsEnabled ?
+                <button className="btn red" onClick={() => socket.emit("message", { type: "requestDisableClips" })}>Disable Clips</button>
+                :
+                <button className="btn" onClick={() => socket.emit("message", { type: "requestEnableClips" })}>Enable Clips</button>
+              }
+            </section>
 
-            <AutoplayToggle />
 
-            <h1 className="queued">Queued Clips ({clipsQueue.length})</h1>
+            <h1 className="header-text" style={{ marginTop: "2rem" }}>Queued Clips ({clipsQueue.length})</h1>
             <div className="clips-list">
               {clipsQueue && clipsQueue.map((clip: any) => (
                 <TwitchClip
@@ -144,33 +143,6 @@ const App = () => {
 
           </div>
 
-          {/* <div className="row controls">
-            <h1 className="title">Controls</h1>
-            <div className="buttons">
-              <button className="control-btn">Enable Clips</button>
-              <button className="control-btn">Enable Clips</button>
-              <input type="range" />
-            </div>
-          </div> */}
-
-
-          {/* <div className="row clip-section">
-            <div className="header-text">Clip Management</div>
-
-            <div className="clips">
-              <Grid container spacing={2}>
-                {clipsQueue && clipsQueue.map((clip: any) => (
-                  <TwitchClip
-                    removeClip={() => removeClip(clip.id)}
-                    playClip={() => playClip(clip.id)}
-                    slug={clip.id}
-                    thumbnail={clip.thumbnail_url}
-                    title={clip.title} />
-                ))}
-
-              </Grid>
-            </div>
-          </div> */}
         </React.Fragment>
       }
 
