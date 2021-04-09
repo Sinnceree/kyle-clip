@@ -22,6 +22,9 @@ node_modules/
 .env
 .env.test
 
+# FRONTEND build
+build/
+
 # JetBrains
 .idea/**/workspace.xml
 .idea/**/tasks.xml
