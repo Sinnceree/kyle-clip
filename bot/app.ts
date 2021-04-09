@@ -3,14 +3,10 @@ import * as dotenv from "dotenv"
 import socket from "socket.io"
 import { BotClient } from "./classes/BotClient"
 import request from "request"
+import { Twitch } from "node-ttv"
 
-
-const { Twitch } = require("node-ttv")
-
-// Init .env
 dotenv.config()
 
-// const tmi = require('tmi.js');
 export const io = socket(process.env.PORT || 5000)
 
 // Lets connect to the twitch irc

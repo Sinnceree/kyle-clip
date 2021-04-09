@@ -113,8 +113,6 @@ const App = () => {
               controls
               volume={playerVolume}
               onEnded={() => onClipEnded(currentClip)} />
-
-
           </div>
 
           <div className="bottom-block">
