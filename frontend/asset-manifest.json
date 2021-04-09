@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/kyle-clip/frontend/static/css/main.ca58933f.chunk.css",
-    "main.js": "/kyle-clip/frontend/static/js/main.e4321e4d.chunk.js",
-    "main.js.map": "/kyle-clip/frontend/static/js/main.e4321e4d.chunk.js.map",
+    "main.js": "/kyle-clip/frontend/static/js/main.076c9f5d.chunk.js",
+    "main.js.map": "/kyle-clip/frontend/static/js/main.076c9f5d.chunk.js.map",
     "reactPlayerDailyMotion.js": "/kyle-clip/frontend/static/js/reactPlayerDailyMotion.55eb792a.chunk.js",
     "reactPlayerDailyMotion.js.map": "/kyle-clip/frontend/static/js/reactPlayerDailyMotion.55eb792a.chunk.js.map",
     "reactPlayerFacebook.js": "/kyle-clip/frontend/static/js/reactPlayerFacebook.4b856f27.chunk.js",
@@ -27,20 +27,20 @@
     "reactPlayerYouTube.js.map": "/kyle-clip/frontend/static/js/reactPlayerYouTube.d492edae.chunk.js.map",
     "runtime-main.js": "/kyle-clip/frontend/static/js/runtime-main.688f1648.js",
     "runtime-main.js.map": "/kyle-clip/frontend/static/js/runtime-main.688f1648.js.map",
-    "static/js/13.b18cff22.chunk.js": "/kyle-clip/frontend/static/js/13.b18cff22.chunk.js",
-    "static/js/13.b18cff22.chunk.js.map": "/kyle-clip/frontend/static/js/13.b18cff22.chunk.js.map",
+    "static/js/13.fffe4a7e.chunk.js": "/kyle-clip/frontend/static/js/13.fffe4a7e.chunk.js",
+    "static/js/13.fffe4a7e.chunk.js.map": "/kyle-clip/frontend/static/js/13.fffe4a7e.chunk.js.map",
     "static/js/14.497f65ba.chunk.js": "/kyle-clip/frontend/static/js/14.497f65ba.chunk.js",
     "static/js/14.497f65ba.chunk.js.map": "/kyle-clip/frontend/static/js/14.497f65ba.chunk.js.map",
     "index.html": "/kyle-clip/frontend/index.html",
-    "precache-manifest.a752d6f28a3b88abef2b3f1971c15a23.js": "/kyle-clip/frontend/precache-manifest.a752d6f28a3b88abef2b3f1971c15a23.js",
+    "precache-manifest.d4e0f0b45201b00299a55902f310350d.js": "/kyle-clip/frontend/precache-manifest.d4e0f0b45201b00299a55902f310350d.js",
     "service-worker.js": "/kyle-clip/frontend/service-worker.js",
     "static/css/main.ca58933f.chunk.css.map": "/kyle-clip/frontend/static/css/main.ca58933f.chunk.css.map",
-    "static/js/13.b18cff22.chunk.js.LICENSE.txt": "/kyle-clip/frontend/static/js/13.b18cff22.chunk.js.LICENSE.txt"
+    "static/js/13.fffe4a7e.chunk.js.LICENSE.txt": "/kyle-clip/frontend/static/js/13.fffe4a7e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.688f1648.js",
-    "static/js/13.b18cff22.chunk.js",
+    "static/js/13.fffe4a7e.chunk.js",
     "static/css/main.ca58933f.chunk.css",
-    "static/js/main.e4321e4d.chunk.js"
+    "static/js/main.076c9f5d.chunk.js"
   ]
 }

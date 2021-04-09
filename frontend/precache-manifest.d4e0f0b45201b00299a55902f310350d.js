@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a198a01bec8aa0f303a097a8ca51e338",
+    "revision": "68a717d8d7cfce5a985f7beffb969253",
     "url": "/kyle-clip/frontend/index.html"
   },
   {
-    "revision": "47c159d402037afee46f",
+    "revision": "474436db875b4ecb67a0",
     "url": "/kyle-clip/frontend/static/css/main.ca58933f.chunk.css"
   },
   {
-    "revision": "ae744de65a09b50568b7",
-    "url": "/kyle-clip/frontend/static/js/13.b18cff22.chunk.js"
+    "revision": "205c9ad274b996bbf446",
+    "url": "/kyle-clip/frontend/static/js/13.fffe4a7e.chunk.js"
   },
   {
     "revision": "0ba4f4c5d17bbe8d0ecf286d9730ff77",
-    "url": "/kyle-clip/frontend/static/js/13.b18cff22.chunk.js.LICENSE.txt"
+    "url": "/kyle-clip/frontend/static/js/13.fffe4a7e.chunk.js.LICENSE.txt"
   },
   {
     "revision": "9e84a4bd53693c2b98ee",
     "url": "/kyle-clip/frontend/static/js/14.497f65ba.chunk.js"
   },
   {
-    "revision": "47c159d402037afee46f",
-    "url": "/kyle-clip/frontend/static/js/main.e4321e4d.chunk.js"
+    "revision": "474436db875b4ecb67a0",
+    "url": "/kyle-clip/frontend/static/js/main.076c9f5d.chunk.js"
   },
   {
     "revision": "45ff6f103ca48ef702a1",
