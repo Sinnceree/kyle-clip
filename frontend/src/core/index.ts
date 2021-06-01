@@ -4,7 +4,7 @@ import * as routes from "./routes"
 import * as actions from "./actions"
 
 export const API = App.API({
-	baseURL: "/v1",
+	baseURL: "https://kyle-twitchbot.herokuapp.com/v1",
 	options: {},
 })
 
