@@ -3,15 +3,32 @@ import * as dotenv from "dotenv"
 import socket from "socket.io"
 import { BotClient } from "./classes/BotClient"
 import request from "request"
+import logger from "morgan"
 import { Twitch } from "node-ttv"
+import http from "http"
+import bodyParser from "body-parser"
+import express, { Router } from "express"
+import { authenticate } from "./middlewares/authenticate";
 
 dotenv.config()
 
-export const io = socket(process.env.PORT || 5000)
+// Init express
+const app = express()
+const server = http.createServer(app);
+
+server.listen(process.env.PORT || 5000, () => console.log("Started running rest api"))
+export const io = socket(server)
+
+// Express middlewares
+app.use(bodyParser.json())
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+const router = Router()
+app.use("/v1", authenticate, router)
 
 // Lets connect to the twitch irc
 const client = new tmi.Client({
-  options: { debug: true },
+  options: { debug: false },
   connection: {
     secure: true,
     reconnect: true
@@ -20,7 +37,7 @@ const client = new tmi.Client({
     username: process.env["botUsername"],
     password: process.env["botPassword"]
   },
-  channels: ["Sinncere"]
+  channels: ["Kyle"]
 });
 client.connect();
 
@@ -63,26 +80,51 @@ io.on("connection", (socket) => {
 
   io.emit("message", { type: "clipsEnabledStaus", status: bot.clipsEnabled });
 
-
-  socket.on("message", (data) => {
-    switch (data.type) {
-      case "nextClip":
-        return bot.playNextClip(data.lastClip);
-      case "removeClip":
-        return bot.playNextClip(data.clip);
-      case "playClip":
-        return bot.playClip(data.clip);
-      case "requestDisableClips":
-        return bot.disableClips()
-      case "requestEnableClips":
-        return bot.enableClips()
-      default:
-        return;
-    }
-  });
   socket.on("disconnect", () => console.log("user disconnected"));
   socket.on("connect", () => console.log("user connect"));
 });
+
+
+
+router.post("/toggleClips", (req, res) => {
+  const { toggle } = req.body;
+
+  if (toggle) {
+    bot.enableClips()
+  } else {
+    bot.disableClips()
+  }
+
+  res.json({ success: true })
+});
+
+router.post("/playClip", (req, res) => {
+  const { clipId } = req.body;
+  bot.playClip(clipId);
+  res.json({ success: true })
+});
+
+router.post("/removeClip", (req, res) => {
+  const { clipId } = req.body;
+  bot.playNextClip(clipId);
+  res.json({ success: true })
+});
+
+router.post("/nextClip", (req, res) => {
+  const { clipId } = req.body;
+  bot.playNextClip(clipId);
+  res.json({ success: true })
+});
+
+
+
+
+
+
+
+
+
+
 
 
 setInterval(() => {

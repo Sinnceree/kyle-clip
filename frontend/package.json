@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://voxze.github.io/kyle-clip/frontend",
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@testing-library/jest-dom": "^4.2.4",

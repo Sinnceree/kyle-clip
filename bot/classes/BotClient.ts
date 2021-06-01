@@ -92,7 +92,7 @@ export class BotClient {
       io.emit("message", { type: "clipsEmpty" });
     }
 
-    io.emit("message", { type: "clipQueue", clips: Object.keys(this.queuedClipsData).map(e => this.queuedClipsData[e]) }); // Send new clips to frontend
+    this.sendUpdatedClipQueue()
 
   }
 
@@ -128,7 +128,7 @@ export class BotClient {
           io.emit("message", { type: "newClip", clip: this.queuedClipsData[clipSlug] });
         }
 
-        io.emit("message", { type: "clipQueue", clips: Object.keys(this.queuedClipsData).map(e => this.queuedClipsData[e]) }); // Send new clips to frontend
+        this.sendUpdatedClipQueue()
         this.queuedClips.push(clipSlug); // Add clip ther queue
         console.log("Added clip to queue");
       }
@@ -137,5 +137,10 @@ export class BotClient {
       console.error(error)
     }
 
+  }
+
+  sendUpdatedClipQueue = () => {
+    const clipsArr = Object.keys(this.queuedClipsData).map(e => this.queuedClipsData[e]);
+    io.emit("message", { type: "clipQueue", clips: clipsArr }); // Send new clips to frontend
   }
 }

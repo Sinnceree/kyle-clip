@@ -24,13 +24,19 @@ const App = () => {
   const [clipsEnabled, setClipsEnabled] = useState<boolean>(false);
   const playerRef = createRef<any>()
 
-  const removeClip = (clip: string) => socket.emit("message", { type: "removeClip", clip: clip });
-  const playClip = (clip: string) => socket.emit("message", { type: "playClip", clip: clip });
+  const removeClip = (clip: string) => {
+    core.actions.removeClip(clip);
+  };
+
+  const playClip = (clip: string) => {
+    core.actions.playClip(clip);
+  };
+
   const clipsEmpty = () => setCurrentClip(null);
 
   const onClipEnded = (clip: any) => {
     if (clip) {
-      socket.emit("message", { type: "nextClip", lastClip: clip.id })
+      core.actions.nextClip(clip.id)
     }
   }
 
@@ -44,7 +50,7 @@ const App = () => {
       if (!clipsEnabled) setClipsEnabled(true);
 
       if (clip.status === 404) {
-        return socket.emit("message", { type: "nextClip", lastClip: clip });
+        return core.actions.nextClip(clip.id)
       }
 
       setCurrentClip(clip);
@@ -83,6 +89,7 @@ const App = () => {
     }
   }
 
+
   useEffect(() => {
     if (!loading) {
       const video = document.querySelector("video");
@@ -120,9 +127,9 @@ const App = () => {
             <section className="controls">
               < AutoplayToggle />
               {clipsEnabled ?
-                <button className="btn red" onClick={() => socket.emit("message", { type: "requestDisableClips" })}>Disable Clips</button>
+                <button className="btn red" onClick={() => core.actions.toggleClipMode(false)}>Disable Clips</button>
                 :
-                <button className="btn" onClick={() => socket.emit("message", { type: "requestEnableClips" })}>Enable Clips</button>
+                <button className="btn" onClick={() => core.actions.toggleClipMode(true)}>Enable Clips</button>
               }
             </section>
 
