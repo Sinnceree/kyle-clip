@@ -7,6 +7,7 @@ import logger from "morgan"
 import { Twitch } from "node-ttv"
 import http from "http"
 import bodyParser from "body-parser"
+import cors from "cors"
 import express, { Router } from "express"
 import { authenticate } from "./middlewares/authenticate";
 
@@ -23,6 +24,7 @@ export const io = socket(server)
 app.use(bodyParser.json())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors)
 const router = Router()
 app.use("/v1", authenticate, router)
 
